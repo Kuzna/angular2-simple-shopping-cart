@@ -1,0 +1,31 @@
+
+<div class="container__donuts">
+    <div class="row">
+        <h3 i18n="@@donuts">Donuts</h3>
+    </div>
+    <div class="row">
+        <app-cart-overview></app-cart-overview>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="col-md-3 col-sm-4" *ngFor="let donut of donuts" (click)="onSelect(donut)">
+                <div class="text-center">
+                    <div id="{{donut.id}}" class="container__donut">
+                        <h4 class="cc-donut-title">{{donut.name}}</h4>
+                        <img class="img-responsive center-block" [src]="donut.imgSrc">
+                        <div class="cc-car-financeInfo-wrapper">
+                            <span class="price">{{donut.price}}$</span>
+                        </div>
+                        <span class="btn btn-primary" (click)="onAddToCart(donut)"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <ng-container i18n="@@add_to_cart">Add to Cart</ng-container></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h3>Range: {{(rangeValues[0]/100) + ' - ' + (rangeValues[1]/100)}}</h3>
+            <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="200" [max]="400" [step]="10" (onChange)="handleChange($event)"></p-slider>
+
+            <app-donut-detail [donut]="selectedDonut"></app-donut-detail>
+        </div>
+    </div>
+</div>

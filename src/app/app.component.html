@@ -1,0 +1,23 @@
+<h3>
+  <a [routerLink]="['/']">Liferay Angular 2 (Donut shop)</a>
+</h3>
+
+
+
+
+<ul class="nav navbar-nav navbar-right">
+  <li>
+    <a *ngIf="!authService.loggedIn()" [routerLink]="['/login']"><ng-container i18n="@@login">Log in</ng-container></a>
+  </li>
+  <li>
+    <a *ngIf="authService.loggedIn()" (click)=authService.logout()><ng-container i18n="@@logout">Log Out</ng-container></a>
+  </li>
+</ul>
+
+<alert></alert>
+
+<main>
+	<router-outlet></router-outlet>
+</main>
+
+<footer>Donut shop</footer>

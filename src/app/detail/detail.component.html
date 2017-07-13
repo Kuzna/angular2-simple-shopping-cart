@@ -1,0 +1,11 @@
+<div *ngIf="donut">
+  <div class="text-center">
+    <div id="{{donut.id}}" class="container__donut">
+      <h4 class="cc-donut-title">{{donut.name}}</h4>
+      <img class="img-responsive center-block" [src]="donut.imgSrc">
+      <div class="cc-car-financeInfo-wrapper">
+        <span class="price">{{donut.price}}$</span>
+      </div>
+    </div>
+  </div>
+</div>

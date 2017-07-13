@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th i18n="@@product">Product</th>
+        <th i18n="@@quantity">Quantity</th>
+        <th class="text-center" i18n="@@price">Price</th>
+        <th class="text-center" i18n="@@total">Total</th>
+        <th> </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let cartItem of cartItems">
+        <td class="col-sm-8 col-md-6">
+          <div class="media">
+            <a class="thumbnail pull-left" href="#"> <img class="media-object" [src]="cartItem.imgSrc" style="width: 72px; height: 72px;"> </a>
+            <div class="media-body">
+              <h4 class="media-heading"><a href="#">{{cartItem.name}}</a></h4>
+              <span><ng-container i18n="@@status">Status:</ng-container> </span><span class="text-success"><strong><ng-container i18n="@@in_stock">In Stock</ng-container></strong></span>
+            </div>
+          </div></td>
+        <td class="col-sm-1 col-md-1" style="text-align: center">
+          <input type="email" class="form-control" id="exampleInputEmail1" value="{{cartItem.quantity}}">
+        </td>
+        <td class="col-sm-1 col-md-1 text-center"><strong>{{cartItem.price | number : '1.2-2'}}</strong></td>
+        <td class="col-sm-1 col-md-1 text-center"><strong>{{cartItem.price * cartItem.quantity | number : '1.2-2'}}</strong></td>
+        <td class="col-sm-1 col-md-1">
+          <button type="button" class="btn btn-danger" (click)="onDeleteItem(cartItem)">
+            <span class="glyphicon glyphicon-remove"></span> <ng-container i18n="@@remove">Remove</ng-container>
+          </button></td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>   </td>
+        <td>   </td>
+        <td>   </td>
+        <td><h5>Subtotal<br>Estimated shipping</h5><h3 i18n="@@status">Total</h3></td>
+        <td class="text-right"><h5><strong>{{getTotalPrice() | number : '1.2-2'}}</strong></h5></td>
+      </tr>
+      <tr>
+        <td>   </td>
+        <td>   </td>
+        <td>   </td>
+        <td>
+          <a [routerLink]="['/']"><span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping)</a>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success">
+            <ng-container i18n="@@checkout">Checkout</ng-container> <span class="glyphicon glyphicon-play"></span>
+          </button></td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="pull-right">
+    <a [routerLink]="['/cart-detail']" i18n-title="@@cart" title="Cart">
+        <ul class="list-inline">
+            <li>
+                <i class="fa fa-2x fa-shopping-cart"></i>
+                <div id="cart-badge" class="badge badge-warning">{{getItemsCounts()}}</div>
+            </li>
+            <li>{{getTotalPrice() | number : '1.2-2'}} <span class="currency">$</span></li>
+        </ul>
+    </a>
+</div>
